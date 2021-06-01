@@ -7,20 +7,34 @@
     <body>
         <script>
             src="/scripts/main.js"
-            let a = 10;
-            console.log('Hello world!');
-            console.log(23 + 97);
-            console.log(1 + 2 + 3 + 4 + 5 + 6);
-            console.log((4 + 6 + 9 ) / 77);
-            console.log(a);
-            console.log(9 * a);
-            let b = 7 * a;
-            console.log(b);
-            const max = 57;
-            const actual = max - 13;
-            const percentage = actual / max;
-            percentage;
 
+            let choice = prompt('Rock, paper, scissors?').toLowerCase();
+            if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
+              alert('Invalid choice');
+            }
+            
+            function computerPlay() {
+                let random = Math.random() * 3;
+                return random < 1 ? 'rock'
+                : random < 2 ? 'paper'
+                : 'scissors';
+            }
+
+            function playRound (playerSelection, computerSelection) {
+                if (playerSelection == computerSelection) {
+                    return 'It\'s a tie!';
+                 } else if ((playerSelection == 'rock' && computerSelection == 'scissors')  || 
+                 (playerSelection == 'paper' && computerSelection == 'rock') ||
+                 (playerSelection == 'scissors' && computerSelection == 'paper')) {
+                     return 'You win!';
+                 } else return 'You lose.';
+                 }
+
+            const computerSelection = computerPlay();
+            const playerSelection = choice;
+            console.log(playRound(playerSelection, computerSelection));
+
+        
 
         </script>
     </body>

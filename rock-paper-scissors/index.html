@@ -6,22 +6,19 @@
     </head>
     <body>
         <script>
-            src="/scripts/main.js"
 
             let playerScore = 0;
             let computerScore = 0;
             let drawScore = 0;
 
-            let choice = prompt('Rock, paper, scissors?').toLowerCase();
-            if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
-              alert('Invalid choice');
-            }
-
             function playerPlay() {
-            let choice = prompt('Rock, paper, scissors?').toLowerCase();
-            if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
-              alert('Invalid choice');
+                let choice = prompt('Rock, paper, scissors?').toLowerCase();
+                if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
+                alert('Invalid choice');
+                } else  {
+                return choice;
             }
+            
         }
         
             function computerPlay() {
@@ -35,39 +32,30 @@
                 if (playerSelection == computerSelection) {
                     drawScore ++;
                     console.log('It\'s a tie!');
-                    //return 'It\'s a tie!';
-                 } else if ((playerSelection == 'rock' && computerSelection == 'scissors')  || 
+                } else if ((playerSelection == 'rock' && computerSelection == 'scissors')  || 
                     (playerSelection == 'paper' && computerSelection == 'rock') ||
                     (playerSelection == 'scissors' && computerSelection == 'paper')) {
                      playerScore++;
                      console.log('You win!');
-                     //return 'You win!';
-                 } else computerScore++;
-                 //return 'You lose.';
+                 } else { 
+                    computerScore++;
                     console.log('You lose.');
-                    return playerScore, computerScore;
                 }
-                   
-           
-
+            }
 
             function game() {
-                for (let i = 1; i<5; i++) 
-                playerPlay ();
+                let gameOver = false;
+                while (gameOver == false) {
+                    let computerSelection = computerPlay();
+                    let playerSelection = playerPlay();
                     playRound (playerSelection, computerSelection);
-                   
+                    if ((playerScore == 5) || (computerScore == 5)) {
+                        gameOver = true;
+                    }
                 }
-               
-            
-                 
-            let computerSelection = computerPlay();
-            let playerSelection = choice;
-           console.log(game());
-          //console.log(playRound(playerSelection, computerSelection));
-          
-
+            }    
            
-
+        game();          
   
         </script>
     </body>

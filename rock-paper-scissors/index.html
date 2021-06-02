@@ -12,15 +12,18 @@
             let computerScore = 0;
             let drawScore = 0;
 
-            //function playerPlay() {
-            //code here is fine
             let choice = prompt('Rock, paper, scissors?').toLowerCase();
             if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
               alert('Invalid choice');
             }
-        //}
+
+            function playerPlay() {
+            let choice = prompt('Rock, paper, scissors?').toLowerCase();
+            if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
+              alert('Invalid choice');
+            }
+        }
         
-            
             function computerPlay() {
                 let random = Math.random() * 3;
                 return random < 1 ? 'rock'
@@ -29,37 +32,39 @@
             }
 
             function playRound (playerSelection, computerSelection) {
-                //choice;
                 if (playerSelection == computerSelection) {
                     drawScore ++;
-                    return 'It\'s a tie!';
-                    //console.log('It\'s a tie!');
+                    console.log('It\'s a tie!');
+                    //return 'It\'s a tie!';
                  } else if ((playerSelection == 'rock' && computerSelection == 'scissors')  || 
-                 (playerSelection == 'paper' && computerSelection == 'rock') ||
-                 (playerSelection == 'scissors' && computerSelection == 'paper')) {
+                    (playerSelection == 'paper' && computerSelection == 'rock') ||
+                    (playerSelection == 'scissors' && computerSelection == 'paper')) {
                      playerScore++;
-                     return 'You win!';
-                     //console.log('You win!');
+                     console.log('You win!');
+                     //return 'You win!';
                  } else computerScore++;
-                 return 'You lose.';
-                 //console.log('You lose.');
-                 }
-                //all the way to here
-                
-
-                 function game() {
-                for (let i = 0; i<5; i++) {            
-                        playRound (playerSelection, computerSelection);
-                    }
-            }
+                 //return 'You lose.';
+                    console.log('You lose.');
+                    return playerScore, computerScore;
                  
+            }            
+           
 
-        
+
+            function game() {
+                for (let i = 1; i<5; i++) 
+                playerPlay ();
+                    playRound (playerSelection, computerSelection);
+                   
+                }
+               
+            
+                 
             let computerSelection = computerPlay();
             let playerSelection = choice;
-            //let playerSelection = playerPlay();
-           //console.log(game () );
-           console.log(playRound(playerSelection, computerSelection));
+           console.log(game());
+          //console.log(playRound(playerSelection, computerSelection));
+          
 
            
 

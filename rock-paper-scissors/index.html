@@ -13,6 +13,15 @@
                 
                 <!--<button id ="rockBtn">Rock</button> -->
             </div>
+
+            <div class="scores">
+                <div id="playerScore">Player score: </div>
+                <div id="computerScore">Computer score:</div>
+            </div>
+
+            <div>Result:</div>
+                <div id="results"></div>
+
         </p>
         <script>
            const choicesBtn = document.querySelectorAll('div.choicesBtn button');
@@ -20,18 +29,10 @@
                 button.addEventListener('click', getPlayerChoice)            
             });
 
-            
 
-            /*const rockChoice = document.querySelector('#rockBtn');
-            rockChoice.addEventListener('click', getPlayerChoice => {
-            
-        });*/
-
-
-
-            /*const rockBtn = document.querySelector('.rock');
-            const paperBtn = document.querySelector('.paper');
-            const scissorsBtn = document.querySelector('.scissors');*/
+            const playerPoints = document.querySelector('#playerScore');
+            const computerPoints = document.querySelector('#computerScore');
+            const results = document.querySelector('#results');
 
             let playerScore = 0;
             let computerScore = 0;
@@ -59,15 +60,15 @@
                 //playerSelection = this.dataset.button;
                 if (playerSelection == computerSelection) {
                     drawScore ++;
-                    console.log('It\'s a tie!');
+                    results.textContent = 'It\'s a tie!';
                 } else if ((playerSelection == 'rock' && computerSelection == 'scissors')  || 
                     (playerSelection == 'paper' && computerSelection == 'rock') ||
                     (playerSelection == 'scissors' && computerSelection == 'paper')) {
-                     playerScore++;
-                     console.log('You win!');
+                     playerPoints.textContent = 'Player score: ' + ++playerScore;
+                     results.textContent = 'You win!';
                  } else { 
-                    computerScore++;
-                    console.log('You lose.');
+                    computerPoints.textContent = 'Computer score: ' + ++computerScore;
+                    results.textContent = 'You lose.';
                 }
             }
 

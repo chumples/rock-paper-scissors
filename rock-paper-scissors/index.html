@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rock, Paper, Scissors</title>
+        <title>Rock Paper Scissors</title>
         <meta charset="UTF-8"/>
+        Let's play Rock Paper Scissors! First to 5 wins!
     </head>
     <body>
         <p>
             <div class="choicesBtn">
-                <button id="rock" data-button="rock">rock</button>
-                <button id="paper" data-button="paper">Paper</button>
-                <button id="scissors" data-button="scissors">Scissors</button>
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
                 
-                <!--<button id ="rockBtn">Rock</button> -->
             </div>
 
             <div class="scores">
@@ -39,16 +39,6 @@
             let drawScore = 0;
             let playerChoice;
 
-            /*function playerPlay() {
-                let choice = prompt('Rock, paper, scissors?').toLowerCase();
-                if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
-                alert('Invalid choice');
-                } else  {
-                return choice;
-            }
-        }
-        */
-
             function computerPlay() {
                 let random = Math.random() * 3;
                 return random < 1 ? 'rock'
@@ -57,7 +47,6 @@
             }
 
             function playRound (playerSelection, computerSelection) {
-                //playerSelection = this.dataset.button;
                 if (playerSelection == computerSelection) {
                     drawScore ++;
                     results.textContent = 'It\'s a tie!';
@@ -70,23 +59,32 @@
                     computerPoints.textContent = 'Computer score: ' + ++computerScore;
                     results.textContent = 'You lose.';
                 }
+                checkWinner();
             }
 
-            function game() {
+            function checkWinner() {
+                if (computerScore == 5) {
+                    alert('The computer wins the match!');
+                    return;
+                } if (playerScore == 5) {
+                    alert('You won the match!');
+                    return;
+                }
+            }
+
+            /*function game() {
                 let gameOver = false;
                 while (gameOver == false) {
-                    let computerSelection = computerPlay();
+                    function getPlayerChoice(event)
+                    //let computerSelection = computerPlay();
+                    //let playerSelection = (event.target.id);
                     //let playerSelection = playerPlay();
-                    playRound (playerSelection, computerSelection);
+                    //playRound (playerSelection, computerSelection);
                     if ((playerScore == 5) || (computerScore == 5)) {
                         gameOver = true;
                     }
                 }
-            }    
-           
-            /*rockBtn.addEventListener('click', playRound);
-            paperBtn.addEventListener('click', playRound);
-            scissorsBtn.addEventListener('click', playRound);*/
+            } */   
 
             function getPlayerChoice(event) {
                 let playerSelection = (event.target.id);
@@ -95,10 +93,6 @@
             }
 
         //game();      
-        
-        //document.getElementById("rockBtn").addEventListener("click", function playRound(rock, computerSelection) {
-
-        //});
   
         </script>
     </body>

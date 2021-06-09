@@ -5,49 +5,22 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <p>
-            <div class="choicesBtn">
-                <button id="rock" data-button="rock">rock</button>
-                <button id="paper" data-button="paper">Paper</button>
-                <button id="scissors" data-button="scissors">Scissors</button>
-                
-                <!--<button id ="rockBtn">Rock</button> -->
-            </div>
-        </p>
         <script>
-           const choicesBtn = document.querySelectorAll('div.choicesBtn button');
-            choicesBtn.forEach(button => {
-                button.addEventListener('click', getPlayerChoice)            
-            });
-
-            
-
-            /*const rockChoice = document.querySelector('#rockBtn');
-            rockChoice.addEventListener('click', getPlayerChoice => {
-            
-        });*/
-
-
-
-            /*const rockBtn = document.querySelector('.rock');
-            const paperBtn = document.querySelector('.paper');
-            const scissorsBtn = document.querySelector('.scissors');*/
 
             let playerScore = 0;
             let computerScore = 0;
             let drawScore = 0;
-            let playerChoice;
 
-            /*function playerPlay() {
+            function playerPlay() {
                 let choice = prompt('Rock, paper, scissors?').toLowerCase();
                 if (choice != 'rock' && (choice != 'paper') && (choice !='scissors')) {
                 alert('Invalid choice');
                 } else  {
                 return choice;
             }
+            
         }
-        */
-
+        
             function computerPlay() {
                 let random = Math.random() * 3;
                 return random < 1 ? 'rock'
@@ -56,7 +29,6 @@
             }
 
             function playRound (playerSelection, computerSelection) {
-                //playerSelection = this.dataset.button;
                 if (playerSelection == computerSelection) {
                     drawScore ++;
                     console.log('It\'s a tie!');
@@ -75,7 +47,7 @@
                 let gameOver = false;
                 while (gameOver == false) {
                     let computerSelection = computerPlay();
-                    //let playerSelection = playerPlay();
+                    let playerSelection = playerPlay();
                     playRound (playerSelection, computerSelection);
                     if ((playerScore == 5) || (computerScore == 5)) {
                         gameOver = true;
@@ -83,21 +55,7 @@
                 }
             }    
            
-            /*rockBtn.addEventListener('click', playRound);
-            paperBtn.addEventListener('click', playRound);
-            scissorsBtn.addEventListener('click', playRound);*/
-
-            function getPlayerChoice(event) {
-                let playerSelection = (event.target.id);
-                playerChoice = event.target.textContent;
-                playRound(playerSelection, computerPlay());
-            }
-
-        //game();      
-        
-        //document.getElementById("rockBtn").addEventListener("click", function playRound(rock, computerSelection) {
-
-        //});
+        game();          
   
         </script>
     </body>

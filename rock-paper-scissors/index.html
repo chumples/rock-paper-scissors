@@ -15,8 +15,8 @@
             </div>
 
             <div class="scores">
-                <div id="playerScore">Player score: </div>
-                <div id="computerScore">Computer score:</div>
+                <div id="playerScore">Player score: asdf0 </div>
+                <div id="computerScore">Computer score: 0</div>
             </div>
 
             <div>Result:</div>
@@ -63,37 +63,39 @@
             }
 
             function checkWinner() {
-                if (computerScore == 5) {
+                if (computerScore >= 5) {
                     alert('The computer wins the match!');
-                    return;
-                } if (playerScore == 5) {
+                    results.textContent = 'The computer wins the match!';
+                    choicesBtn.forEach(button => {
+                        button.removeEventListener('click', getPlayerChoice);            
+                    });
+                } if (playerScore >= 5) {
                     alert('You won the match!');
-                    return;
+                    results.textContent = 'You won the match!';
+                    choicesBtn.forEach(button => {
+                        button.removeEventListener('click', getPlayerChoice);            
+                    });
                 }
             }
 
             /*function game() {
                 let gameOver = false;
                 while (gameOver == false) {
-                    function getPlayerChoice(event)
-                    //let computerSelection = computerPlay();
-                    //let playerSelection = (event.target.id);
-                    //let playerSelection = playerPlay();
-                    //playRound (playerSelection, computerSelection);
+                    let computerSelection = computerPlay();
+                    let playerSelection = playerPlay();
+                    playRound (playerSelection, computerSelection);
                     if ((playerScore == 5) || (computerScore == 5)) {
                         gameOver = true;
                     }
                 }
-            } */   
+            }     */   
 
             function getPlayerChoice(event) {
                 let playerSelection = (event.target.id);
                 playerChoice = event.target.textContent;
                 playRound(playerSelection, computerPlay());
             }
-
-        //game();      
-  
+            
         </script>
     </body>
 </html>
